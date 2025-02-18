@@ -6,6 +6,7 @@ class users(SQLModel, table=True):
     __tablename__ = "Users"
     id : Optional[int] = Field(default=None, primary_key=True)
     username : str
+    age: int
 
 # class loan_requests(SQLModel):
 #     pass
