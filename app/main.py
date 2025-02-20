@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from app.api.endpoints import auth, users, secrets
+from app.api.endpoints import auth, users, secrets, prediction
 from app.db.session import engine
 from sqlmodel import SQLModel
 
@@ -15,3 +15,4 @@ app = FastAPI(title="SBA loan prediction app")
 app.include_router(auth.router, prefix="/api", tags=["auth"])
 app.include_router(users.router, prefix="/api", tags=["users"])
 app.include_router(secrets.router, prefix="/api")
+app.include_router(prediction.router, prefix="/api", tags=["predictions"])
