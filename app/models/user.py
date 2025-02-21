@@ -8,6 +8,6 @@ class User(SQLModel, table=True):
     username : str = Field(unique=True)
     password: str
     email: Optional[str]
-    disabled: Optional[bool] = Field(default=False)
+    disabled: Optional[bool] = Field(default=True)
     role: int
     is_active: Optional[bool] | None = False

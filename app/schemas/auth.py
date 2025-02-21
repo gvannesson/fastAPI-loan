@@ -7,3 +7,7 @@ class Token(BaseModel):
     
 class TokenData(BaseModel):
     username: str | None = None
+
+class PasswordChangeForm(BaseModel):
+    previous_pwd : str
+    new_pwd : str
