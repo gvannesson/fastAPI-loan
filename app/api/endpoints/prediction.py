@@ -8,14 +8,14 @@ router = APIRouter()
 @router.post("/loans/predict")
 async def predict(features: Features):
     data = format_data(features)
-    print(type(data))
-    result = model.predict(data)
+    # print(type(data))
+    # print(model.feature_name_)  
     try:
-        pass
+        result = model.predict(data)
     except:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Invalid datas for prediction.",
             headers={"WWW-Authenticate": "Bearer"},                
         )    
-    return result
+    return result.tolist()
