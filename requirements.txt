@@ -1,0 +1,12 @@
+sqlmodel==0.0.22
+fastapi==0.115.8
+uvicorn==0.34.0
+alembic==1.14.1
+PyJWT==2.10.1
+dotenv==0.9.9
+bcrypt==4.2.1
+python-multipart==0.0.20
+pandas==2.2.3
+scikit-learn==1.6.1
+cloudpickle==3.1.1
+lightgbm-4.6.0
