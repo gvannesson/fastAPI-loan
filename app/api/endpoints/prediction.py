@@ -15,6 +15,7 @@ router = APIRouter()
 @router.post("/loans/predict")
 async def predict(features: Features, user_id: Annotated[int, Depends(get_current_user_id)]):
     data = format_data(features)
+    print(data)
     # print(type(data))
     # print(model.feature_name_)  
     try:

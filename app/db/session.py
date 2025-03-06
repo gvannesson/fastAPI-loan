@@ -1,8 +1,12 @@
 from sqlmodel import create_engine, Session
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-DATABASE_URL = "sqlite:///app/db/database.db"
+# DATABASE_URL = "sqlite:///app/db/database.db"
+print(os.getenv('DATABASE_URL'))
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(os.getenv('DATABASE_URL'), echo=True)
 
 def get_session():
     with Session(engine) as session:
