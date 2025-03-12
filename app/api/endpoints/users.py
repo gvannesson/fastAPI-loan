@@ -49,7 +49,7 @@ async def get_current_user_id(token: Annotated[str, Depends(oauth2_scheme)]):
             raise credentials_exception
     except InvalidTokenError:
         raise credentials_exception
-         
+    
     return user_id
 
 async def get_current_active_user(
