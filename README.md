@@ -112,7 +112,7 @@ Your API should now be accessible at http://localhost:8000/.
 
 For deploying to Azure Container Instances (ACI) or another cloud platform, you can use the provided shell script deploy.sh along with environment variable management (e.g., through Docker Compose or Azure CLI). Make sure to adjust resource allocation and networking settings as needed for production workloads.
 
-## Contributing
+## Authors
 
 Gauthier VANNESSON
 https://github.com/gvannesson
