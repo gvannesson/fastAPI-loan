@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # Configuration des variables (modifiez-les selon vos besoins)
-RESOURCE_GROUP="sthorezRG"
-ACR_NAME="sthorezregistry"  # Nom de votre Azure Container Registry
+RESOURCE_GROUP="" #Nom de votre groupe de ressources Azure
+ACR_NAME=""  # Nom de votre Azure Container Registry
 REGION="francecentral"  # Région où vous souhaitez déployer
-IMAGE_NAME="fastapi-loan"  # Nom de l'image Docker
-CONTAINER_NAME="sthorez-fastapi-loan-container-autodeploy"  # Nom du conteneur
+IMAGE_NAME=""  # Nom de l'image Docker
+CONTAINER_NAME=""  # Nom du conteneur
 DOCKER_COMPOSE_PATH="compose.yaml"  # Le chemin vers votre fichier docker-compose
+PORT=8086
 
 . ./.env
 
@@ -51,7 +52,7 @@ az container create \
     --cpu 1 \
     --memory 1.5 \
     --ip-address public \
-    --ports 8086 \
+    --ports $PORT \
     --environment-variables SECRET_KEY=$SECRET_KEY DATABASE_URL=$DATABASE_URL \
     --registry-login-server $ACR_NAME.azurecr.io \
     --registry-username $REGISTRY_USERNAME \
@@ -61,4 +62,4 @@ az container create \
 
 # 9. Afficher l'URL du conteneur
 CONTAINER_IP=$(az container show --resource-group $RESOURCE_GROUP --name $CONTAINER_NAME --query "ipAddress.ip" -o tsv)
-echo "Le conteneur est déployé. Vous pouvez y accéder à l'adresse suivante : http://$CONTAINER_IP:8086"
+echo "Le conteneur est déployé. Vous pouvez y accéder à l'adresse suivante : http://$CONTAINER_IP:$PORT"
